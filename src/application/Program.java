@@ -1,6 +1,7 @@
 package application;
 
-import entities.Rectangle;
+import entities.Employee;
+import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -11,16 +12,17 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        Rectangle rect = new Rectangle();
-        System.out.println("Enter rectangle width and height");
-        rect.width = sc.nextDouble();
-        rect.heigth = sc.nextDouble();
-
-        System.out.printf("AREA = %.2f%n", rect.area());
-        System.out.printf("Perimeter = %.2f%n", rect.perimeter());
-        System.out.printf("Diagonal = %.2f%n", rect.diagonal());
-
-        sc.close();
-
+        Employee employee = new Employee();
+        System.out.print("name: ");
+        employee.name = sc.nextLine();
+        System.out.print("Gross salary: ");
+        employee.grossSalary = sc.nextDouble();
+        System.out.print("Tax: ");
+        employee.tax = sc.nextDouble();
+        System.out.printf("\nEmployee : %s, $ %.2f%n",employee.name , employee.netSalary());
+        System.out.print("\nWhich percentage to increase salary? " );
+        double percentage = sc.nextDouble();
+        employee.increaseSalary(percentage);
+        System.out.printf("\nUpdated data: %s, $ %.2f%n",employee.name , employee.netSalary());
     }
 }
