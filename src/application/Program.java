@@ -1,6 +1,6 @@
 package application;
 
-import entities.Student;
+import entities.CurrencyConverter;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -11,21 +11,13 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        Student stundent = new Student();
-            stundent.name = sc.nextLine();
-        stundent.grade1 = sc.nextDouble();
-        stundent.grade2 = sc.nextDouble();
-        stundent.grade3 = sc.nextDouble();
+        System.out.print("What is the dollar price?");
+        double dollar = sc.nextDouble();
+        System.out.print("How many dollars will be bougth?");
+        double reais = sc.nextDouble();
+        double result = CurrencyConverter.valor(dollar,reais);
+        System.out.printf("Amount to be paid in reais = %.2f%n", result);
 
-        System.out.printf("FINAL GRADE: %.2f%n", stundent.finalGrade());
-        if (stundent.finalGrade() < 60.0) {
-            System.out.println("FAILED");
-            System.out.printf("MISSING %.2f POINTS%n", stundent.missingPoints());
-        }
-        else {
-            System.out.println("PASS");
-        }
-
-            sc.close();
+        sc.close();
     }
 }
